@@ -17,12 +17,9 @@ Author "Randall Cab White - rcwhite@stanford.edu"
     apt-get -ym install luarocks 
     
     
-    wget https://luarocks.org/releases/luarocks-3.0.4.tar.gz
-	tar zxpf luarocks-3.0.4.tar.gz
-	cd luarocks-3.0.4
-	./configure; sudo make bootstrap
-	sudo luarocks install luasocket
-	lua
+
+	luarocks install luasocket
+	
 
 %environment
 	export IMAGE_NAME="NCO"
