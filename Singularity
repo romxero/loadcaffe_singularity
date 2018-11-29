@@ -31,12 +31,12 @@ Author "Randall Cab White - rcwhite@stanford.edu"
 	luarocks install graph
 	luarocks install torchnet
 	luarocks install optnet
+	luarocks install optim
 	luarocks install iterm
 	luarocks list
 	
 	
-	luarocks install luasocket
-	#luarocks install luasec
+	luarocks install luasocket	
 	luarocks install loadcaffe
 	
 
