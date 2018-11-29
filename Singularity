@@ -1,5 +1,5 @@
 Bootstrap: docker
-From: ubuntu:16.04
+From: ubuntu:18.04
 
 %labels
 Author "Randall Cab White - rcwhite@stanford.edu"
@@ -11,16 +11,29 @@ Author "Randall Cab White - rcwhite@stanford.edu"
 ##Just grabbing default packages from ubuntu repository
 %post
 	apt-get -ym update
-	apt-get -ym install git libcgal-dev
-    apt-get -ym install bison cmake flex gcc g++ # GNU toolchain
-    apt-get -ym install gsl-bin libgsl-dev # GSL
-    apt-get -ym install luarocks 
-    
-    
-
-	luarocks install luasocket
+    apt-get -ym install git bison cmake flex gcc g++ tcl-tclreadline # GNU toolchain
+    apt-get -ym install libprotobuf-dev protobuf-compiler # GSL
+    apt-get -ym install readline-common libreadline-dev #readline
+    apt-get -ym install openssl libssl-dev  
+    apt-get -ym install wget curl zip #grabbing utilities
+	
+	mkdir -p /home
+	cd /home
+	git clone https://github.com/torch/distro.git ~/torch --recursive
+	cd ~/torch
+	./clean.sh
+	./install.sh
+	ls -lrths 
+	
+#	luarocks install image
+#	luarocks list
+	
+	
+	#luarocks install luasocket
+	#luarocks install luasec
+	#luarocks install loadcaffe
 	
 
 %environment
-	export IMAGE_NAME="NCO"
+	export IMAGE_NAME="LOAD_CAFFE"
 
