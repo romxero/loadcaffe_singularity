@@ -16,7 +16,7 @@ Author "Randall Cab White - rcwhite@stanford.edu"
     apt-get -ym install readline-common libreadline-dev #readline
     apt-get -ym install openssl libssl-dev  
     apt-get -ym install wget curl zip #grabbing utilities
-	
+	export PREFIX=/usr/local
 	mkdir -p /home
 	cd /home
 	git clone https://github.com/torch/distro.git ~/torch --recursive
@@ -25,8 +25,16 @@ Author "Randall Cab White - rcwhite@stanford.edu"
 	./install.sh
 	ls -lrths 
 	
-#	luarocks install image
-#	luarocks list
+	luarocks install image
+	luarocks install torch
+	luarocks install nn
+	luarocks install graph
+#	luarocks install cunn
+#	luarocks install cutorch
+	luarocks install torchnet
+	luarocks install optnet
+	luarocks install iterm
+	luarocks list
 	
 	
 	#luarocks install luasocket
