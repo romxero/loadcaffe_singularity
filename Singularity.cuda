@@ -14,8 +14,12 @@ Author "Randall Cab White - rcwhite@stanford.edu"
     apt-get -ym install git bison cmake flex gcc g++ tcl-tclreadline # GNU toolchain
     apt-get -ym install libprotobuf-dev protobuf-compiler # GSL
     apt-get -ym install readline-common libreadline-dev #readline
-    apt-get -ym install openssl libssl-dev
+    apt-get -ym install openssl libssl-dev gnupg gnupg2
     apt-get -ym install wget curl zip #grabbing utilities
+#    apt-get -ym install linux-headers-* #get kernel headersr for cuda stuff 
+    
+
+
 	export PREFIX=/usr/local
 	mkdir -p /home
 	cd /home
@@ -25,6 +29,23 @@ Author "Randall Cab White - rcwhite@stanford.edu"
 	./install.sh
 	ls -lrths 
 	
+	
+    
+	#grabing cuda stuff 
+	cd /home
+	wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.0.130-1_amd64.deb
+	dpkg -i cuda-repo-ubuntu1804_10.0.130-1_amd64.deb
+	apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
+	apt-get -ym update
+	apt-get -ym install cuda
+
+
+    
+    
+
+	
+
+
 	luarocks install image
 	luarocks install torch
 	luarocks install nn
@@ -36,9 +57,10 @@ Author "Randall Cab White - rcwhite@stanford.edu"
 	luarocks list
 	
 	
-	luarocks install luasocket	
+	#luarocks install luasocket	
 	luarocks install loadcaffe
-	
+#	luarocks install cutorch
+
 
 %environment
 	export IMAGE_NAME="LOAD_CAFFE_CUDA"
